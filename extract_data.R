@@ -59,3 +59,5 @@ FrontPage1501 <- rbind(FrontPage1501,FrontPage1501b)
 write.csv(Clicks1501,file="Clicks1501.csv")
 write.csv(Results1501,file="Results1501.csv")
 write.csv(FrontPage1501,file="Searches1501.csv")
+
+FrontPage1601 <- pullSearchesGA("ga:3176566","2016-01-01","2016-01-31")

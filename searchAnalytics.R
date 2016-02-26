@@ -8,11 +8,11 @@ pullSearchesGA <- function(GAprofile,startDate,endDate) {
   
   for ( i in seq_along(days) )
   {
-    print(i)
     print(days[i])
-    result <- ga$getData(GAprofile, start.date = days[i], end.date = days[i], metrics=("ga:visits,ga:visitsWithEvent,ga:totalEvents,ga:eventValue"), dimensions = "ga:date,ga:eventCategory,ga:eventAction,ga:eventLabel", sort = "", filters = "ga:eventCategory==Discovery", segment = "")    
-    print("  Bind to master")
+    result <- ga$getData(GAprofile, start.date = days[i], end.date = days[i], metrics=("ga:visits,ga:visitsWithEvent,ga:totalEvents,ga:eventValue"), dimensions = "ga:date,ga:eventCategory,ga:eventAction,ga:eventLabel", sort = "", filters = "ga:eventCategory==Discovery", segment = "", batch = TRUE)
+    print(paste(nrow(result), "rows", ""))
     master <- rbind(master,result)
+    print("")
   }  
   
   return(master)
