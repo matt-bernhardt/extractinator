@@ -1,15 +1,19 @@
-# This script installs necessary packages
+#############################################################################
+# Installation of packages
 
-# rga (R for Google Analytics) requires devtools
+# Devtools
 install.packages("devtools")
 library(devtools)
 
-# install rga itself
+# RGA
+# IMPORTANT - do not just browse for "rga" in CRAN - there is a different package there.
 install_github("skardhamar/rga")
-
-# enable rga
 library("rga")
+
+# Other libraries
+library(jsonlite)
+library(plyr)
 
 # configure rga
 options(RCurlOptions = list(verbose = FALSE, capath = system.file("CurlSSL", "cacert.pem", package = "RCurl"), ssl.verifypeer = FALSE))
-rga.open(instance="ga")
+rga.open(instance="ga", where="~/ga.rga")
